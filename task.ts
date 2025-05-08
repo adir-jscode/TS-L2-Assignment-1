@@ -18,11 +18,7 @@ console.log(str3);
 function filterByRating(
   items: { title: string; rating: number }[]
 ): { title: string; rating: number }[] {
-  items.filter((item) => {
-    item.rating >= 4;
-  });
-
-  return items;
+  return [];
 }
 
 const books = [
@@ -32,14 +28,14 @@ const books = [
 ];
 
 const filteredItems = filterByRating(books);
-console.log(filteredItems);
+console.log("ooo", filteredItems);
 
 function concatenateArrays<T>(...arrays: T[][]): T[] {
   return [];
 }
 
-concatenateArrays(["a", "b"], ["c"]); // Output: ["a", "b", "c"]
-concatenateArrays([1, 2], [3, 4], [5]); // Output: [1, 2, 3, 4, 5]
+concatenateArrays(["a", "b"], ["c"]);
+concatenateArrays([1, 2], [3, 4], [5]);
 
 class Vehicle {
   private make: string;
@@ -68,3 +64,59 @@ class Car extends Vehicle {
 const myCar = new Car("Toyota", 2020, "Corolla");
 myCar.getInfo();
 myCar.getModel();
+
+function processValue(value: string | number): number {
+  if (typeof value === "string") {
+    const length = value.length;
+    return length;
+  } else if (typeof value === "number") {
+    const multiplied = value * 2;
+    return multiplied;
+  }
+  return 0;
+}
+
+const lengthOfString = processValue("hello");
+console.log(lengthOfString);
+const multipliedByTwo = processValue(10);
+console.log(multipliedByTwo);
+
+interface Product {
+  name: string;
+  price: number;
+}
+
+// function getMostExpensiveProduct(products: Product[]): Product | null {
+//   products.forEach((element) => {
+//     console.log("printing....")
+//     console.log(Math.max(element.price));
+//   });
+// }
+// const products = [
+//   { name: "Pen", price: 10 },
+//   { name: "Notebook", price: 25 },
+//   { name: "Bag", price: 50 },
+// ];
+
+// getMostExpensiveProduct(products);
+
+// Output: { name: "Bag", price: 50 }
+
+enum Day {
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+  Sunday,
+}
+
+function getDayType(day: Day): string {
+  return day !== 0 ? "Weekend" : "Weekday";
+}
+
+const weekDayType = getDayType(Day.Monday);
+console.log(weekDayType);
+const weekEndType = getDayType(Day.Sunday);
+console.log(weekEndType);
