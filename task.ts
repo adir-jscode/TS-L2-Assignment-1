@@ -88,23 +88,29 @@ console.log(lengthOfString);
 const multipliedByTwo = processValue(10);
 console.log(multipliedByTwo);
 
-// interface Product {
-//   name: string;
-//   price: number;
-// }
+interface Product {
+  name: string;
+  price: number;
+}
 
-// function getMostExpensiveProduct(products: Product[]): Product | null {
-//   const result = products.map((product) => {console.log(product.price)});
-// }
+function getMostExpensiveProduct(products: Product[]): Product | null {
+  let mostExpensive = products[0];
+  for (let element of products) {
+    if (mostExpensive.price < element.price) {
+      mostExpensive = element;
+    }
+  }
+  return mostExpensive;
+}
 
-// const products = [
-//   { name: "Pen", price: 10 },
-//   { name: "Notebook", price: 25 },
-//   { name: "Bag", price: 50 },
-// ];
+const products = [
+  { name: "Pen", price: 10 },
+  { name: "Notebook", price: 25 },
+  { name: "Bag", price: 50 },
+];
 
-// getMostExpensiveProduct(products);
-// Output: { name: "Bag", price: 50 }
+const expensiveProduct = getMostExpensiveProduct(products);
+console.log(expensiveProduct);
 
 enum Day {
   Monday,
@@ -124,3 +130,17 @@ const weekDayType = getDayType(Day.Monday);
 console.log(weekDayType);
 const weekEndType = getDayType(Day.Sunday);
 console.log(weekEndType);
+
+async function squareAsync(n: number): Promise<number> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (n < 0) {
+        reject("Error: Negative number not allowed");
+      } else {
+        resolve(n * n);
+      }
+    }, 1000);
+  });
+}
+squareAsync(4).then(console.log);
+squareAsync(-3).catch(console.error);
