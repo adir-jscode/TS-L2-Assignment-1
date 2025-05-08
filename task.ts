@@ -18,7 +18,8 @@ console.log(str3);
 function filterByRating(
   items: { title: string; rating: number }[]
 ): { title: string; rating: number }[] {
-  return [];
+  const result = items.filter((item) => item.rating >= 4);
+  return result;
 }
 
 const books = [
@@ -28,14 +29,20 @@ const books = [
 ];
 
 const filteredItems = filterByRating(books);
-console.log("ooo", filteredItems);
+console.log(filteredItems);
 
 function concatenateArrays<T>(...arrays: T[][]): T[] {
-  return [];
+  let newArray = [];
+  for (let value of arrays) {
+    newArray.push(...value);
+  }
+  return newArray;
 }
 
-concatenateArrays(["a", "b"], ["c"]);
-concatenateArrays([1, 2], [3, 4], [5]);
+const arr1 = concatenateArrays(["a", "b"], ["c"]);
+console.log(arr1);
+const arr2 = concatenateArrays([1, 2], [3, 4], [5]);
+console.log(arr2);
 
 class Vehicle {
   private make: string;
@@ -81,17 +88,15 @@ console.log(lengthOfString);
 const multipliedByTwo = processValue(10);
 console.log(multipliedByTwo);
 
-interface Product {
-  name: string;
-  price: number;
-}
+// interface Product {
+//   name: string;
+//   price: number;
+// }
 
 // function getMostExpensiveProduct(products: Product[]): Product | null {
-//   products.forEach((element) => {
-//     console.log("printing....")
-//     console.log(Math.max(element.price));
-//   });
+//   const result = products.map((product) => {console.log(product.price)});
 // }
+
 // const products = [
 //   { name: "Pen", price: 10 },
 //   { name: "Notebook", price: 25 },
@@ -99,7 +104,6 @@ interface Product {
 // ];
 
 // getMostExpensiveProduct(products);
-
 // Output: { name: "Bag", price: 50 }
 
 enum Day {
